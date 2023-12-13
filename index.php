@@ -4,7 +4,6 @@ die;
 
 ?>
 
-
 <?php
 $servername = "localhost";
 $username = "root";
