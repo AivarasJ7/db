@@ -19,43 +19,39 @@ $categories = CategoriesController::getAll();
 </head>
 
 <body>
-    <div class="container">
-        <h1>Categories</h1>
-        <a class="btn btn-success" href="./create.php">Create new category</a>
+    <div class="container mt-5">
+        <h1 class="mb-4">Categories</h1>
+        <a class="btn btn-success mb-3" href="./create.php">Create new category</a>
         <table class="table table-striped">
-            <tr>
-                <th>Number</th>
-                <th>id</th>
-                <th>Category name</th>
-                <th>description</th>
-                <th>Actions</th>
-            </tr>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>ID</th>
+                    <th>Category Name</th>
+                    <th>Description</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
             <?php foreach ($categories as $key => $category) { ?>
                 <tr>
-                    <td> <?= $key + 1 ?> </td>
-                    <td> <?= $category->id ?> </td>
-                    <td> <?= $category->name ?> </td>
-                    <td> <?= $category->description ?> </td>
-                    <td>
-                        <div class="d-inline-block">
-                            <a class="btn btn-primary" href="./show.php?id=<?= $category->id ?>">show</a>
-                        </div>
-                        <div class="d-inline-block">
-                            <form action="./edit.php" method="get">
-                                <input type="hidden" name="id" value="<?= $category->id ?>">
-                                <button class="btn btn-success" type="submit">edit</button>
-                            </form>
-                        </div>
-                        <div class="d-inline-block">
-                            <form action="./index.php" method="post">
-                                <input type="hidden" name="id" value="<?= $category->id ?>">
-                                <button class="btn btn-danger" type="submit">delete</button>
-                            </form>
-                        </div>
-                    </td>
-                </tr>
+                        <td><?= $key + 1 ?></td>
+                        <td><?= $category->id ?></td>
+                        <td><?= $category->name ?></td>
+                        <td><?= $category->description ?></td>
+                        <td>
+                            <div class="btn-group" role="group">
+                                <a class="btn btn-primary" href="./show.php?id=<?= $category->id ?>">Show</a>
+                                <a class="btn btn-success" href="./edit.php?id=<?= $category->id ?>">Edit</a>
+                                <form action="./index.php" method="post" class="d-inline">
+                                    <input type="hidden" name="id" value="<?= $category->id ?>">
+                                    <button class="btn btn-danger" type="submit">Delete</button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
             <?php } ?>
-
+            </tbody>
         </table>
     </div>
 </body>
