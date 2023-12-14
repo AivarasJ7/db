@@ -1,37 +1,44 @@
 <?php
-header("Location: ./views/actor");
+header("Location: ./views/authors");
 die;
-
 ?>
 
-<?php
+
+
+
+
+
+
+<!-- <?php
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "sakila";
+$dbname = "web_11_23_library";
 
-// Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-$sql = "SELECT * FROM `actor`";
+$sql = "SELECT * FROM authors; ";
 $result = $conn->query($sql);
-
-
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
-<?php
-while($row = $result->fetch_assoc()) {
-    echo "<p>id: " . $row["actor_id"]. " - Name: " . $row["first_name"]. " " . $row["last_name"]. "</p>";
-}
-$conn->close();
-?>
+    <?php
+
+    while ($row = $result->fetch_assoc()) {
+        echo "<p>id: " . $row["id"] . " - Name: " . $row["name"] . " " . $row["surname"] . "</p>";
+    }
+
+    $conn->close();
+    ?>
 </body>
-</html>
+
+</html> -->
