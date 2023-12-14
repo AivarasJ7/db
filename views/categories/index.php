@@ -1,8 +1,13 @@
 <?php
-include "../../Controllers/AuthorController.php";
-$authors = AuthorController::getAll();
-?>
+include "../../Controllers/CategoriesController.php";
 
+if($_SERVER['REQUEST_METHOD'] == "POST"){
+    CategoriesController::destroy($_POST['id']);
+    header("Location: ./index.php");
+}
+
+$categories = CategoriesController::getAll();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,26 +27,28 @@ $authors = AuthorController::getAll();
                 <th>nr.</th>
                 <th>id</th>
                 <th>name</th>
-                <th>surname</th>
+                <th>description</th>
                 <th>valdymas</th>
             </tr>
-            <?php foreach ($authors as $key => $author) { ?>
+            <?php foreach ($categories as $key => $categories) { ?>
                 <tr>
                     <td> <?= $key + 1 ?> </td>
-                    <td> <?= $author->id ?> </td>
-                    <td> <?= $author->name ?> </td>
-                    <td> <?= $author->surname ?> </td>
+                    <td> <?= $categories->id ?> </td>
+                    <td> <?= $categories->name ?> </td>
+                    <td> <?= $categories->description ?> </td>
                     <td>
-                    <div class="d-inline-block">
-                        <a class="btn btn-primary" href="">show</a>
-                    </div>
                         <div class="d-inline-block">
-                            <form action="" method="post">
+                            <a class="btn btn-primary" href="./show.php?id=<?= $categories->id ?>">show</a>
+                        </div>
+                        <div class="d-inline-block">
+                            <form action="./edit.php" method="get">
+                                <input type="hidden" name="id" value="<?= $categories->id ?>">
                                 <button class="btn btn-success" type="submit">edit</button>
                             </form>
                         </div>
-                        <div  class="d-inline-block">
-                            <form action="" method="post">
+                        <div class="d-inline-block">
+                            <form action="./index.php" method="post">
+                                <input type="hidden" name="id" value="<?= $categories->id ?>">
                                 <button class="btn btn-danger" type="submit">delete</button>
                             </form>
                         </div>

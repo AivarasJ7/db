@@ -1,3 +1,19 @@
+<?php
+include "../../Controllers/CategoriesController.php";
+
+//jei atejai su post, atnaujinam irasa, ir redirectinam i index.php
+if($_SERVER['REQUEST_METHOD'] == "POST"){
+    CategoriesController::update($_POST['id']);
+    header("Location: ./index.php");
+}
+
+if (!isset($_GET['id'])) {
+    header("Location: ./index.php");
+}
+
+$categories = CategoriesController::find($_GET['id']);
+// print_r($categories);die;
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,15 +29,16 @@
         <div class="row bg-secondary bg-gradient bg-opacity-25">
             <div class="col"></div>
             <div class="col-6">
-                <form>
+                <form action="./edit.php" method="post">
                     <div class="form-group">
                         <label for="name">Name:</label>
-                        <input type="text" class="form-control" id="name" placeholder="Enter Name">
+                        <input type="text" class="form-control" name="name" placeholder="Enter Name" value="<?=$categories->name?>">
                     </div>
                     <div class="form-group">
-                        <label for="surname">Surname:</label>
-                        <input type="text" class="form-control" id="surname" placeholder="Enter Surname">
+                        <label for="description">description:</label>
+                        <input type="text" class="form-control" name="description" placeholder="Enter description" value="<?=$categories->description?>">
                     </div>
+                    <input type="hidden" name="id" value="<?=$categories->id?>">
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
             </div>

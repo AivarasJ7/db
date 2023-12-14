@@ -1,5 +1,5 @@
 <?php
-header("Location: ./views/authors");
+header("Location: ./views/categories");
 die;
 ?>
 
@@ -13,11 +13,11 @@ die;
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "web_11_23_library";
+$dbname = "web_11_23_shop";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-$sql = "SELECT * FROM authors; ";
+$sql = "SELECT * FROM categories; ";
 $result = $conn->query($sql);
 ?>
 
@@ -34,7 +34,7 @@ $result = $conn->query($sql);
     <?php
 
     while ($row = $result->fetch_assoc()) {
-        echo "<p>id: " . $row["id"] . " - Name: " . $row["name"] . " " . $row["surname"] . "</p>";
+        echo "<p>id: " . $row["id"] . " - Name: " . $row["name"] . " " . $row["description"] . "</p>";
     }
 
     $conn->close();
