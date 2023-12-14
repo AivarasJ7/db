@@ -20,35 +20,35 @@ $categories = CategoriesController::getAll();
 
 <body>
     <div class="container">
-        <h1>Čia yra autoriai</h1>
-        <a class="btn btn-success" href="./create.php">sukurti</a>
+        <h1>Categories</h1>
+        <a class="btn btn-success" href="./create.php">Create new category</a>
         <table class="table table-striped">
             <tr>
-                <th>nr.</th>
+                <th>Number</th>
                 <th>id</th>
-                <th>name</th>
+                <th>Category name</th>
                 <th>description</th>
-                <th>valdymas</th>
+                <th>Actions</th>
             </tr>
-            <?php foreach ($categories as $key => $categories) { ?>
+            <?php foreach ($categories as $key => $category) { ?>
                 <tr>
                     <td> <?= $key + 1 ?> </td>
-                    <td> <?= $categories->id ?> </td>
-                    <td> <?= $categories->name ?> </td>
-                    <td> <?= $categories->description ?> </td>
+                    <td> <?= $category->id ?> </td>
+                    <td> <?= $category->name ?> </td>
+                    <td> <?= $category->description ?> </td>
                     <td>
                         <div class="d-inline-block">
-                            <a class="btn btn-primary" href="./show.php?id=<?= $categories->id ?>">show</a>
+                            <a class="btn btn-primary" href="./show.php?id=<?= $category->id ?>">show</a>
                         </div>
                         <div class="d-inline-block">
                             <form action="./edit.php" method="get">
-                                <input type="hidden" name="id" value="<?= $categories->id ?>">
+                                <input type="hidden" name="id" value="<?= $category->id ?>">
                                 <button class="btn btn-success" type="submit">edit</button>
                             </form>
                         </div>
                         <div class="d-inline-block">
                             <form action="./index.php" method="post">
-                                <input type="hidden" name="id" value="<?= $categories->id ?>">
+                                <input type="hidden" name="id" value="<?= $category->id ?>">
                                 <button class="btn btn-danger" type="submit">delete</button>
                             </form>
                         </div>

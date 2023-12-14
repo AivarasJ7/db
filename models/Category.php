@@ -1,6 +1,6 @@
 <?php
 //include database
-class Categories
+class Category
 {
     public $id;
     public $name;
@@ -19,7 +19,7 @@ class Categories
         $db = new mysqli("localhost", "root", "", "web_11_23_shop");
         $result = $db->query("SELECT * from categories");
         while ($row = $result->fetch_assoc()) {
-            $categories[] = new Categories($row['id'], $row['name'], $row['description']);
+            $categories[] = new Category($row['id'], $row['name'], $row['description']);
         }
         $db->close();
         return $categories;
@@ -27,22 +27,19 @@ class Categories
 
     public static function find($id)
     {
-        $categories = new Categories();
+        $categories = new Category();
         $db = new mysqli("localhost", "root", "", "web_11_23_shop");
         // $sql = "SELECT * from categories where id = ?";
         $sql = " SELECT a.id, a.name, a.description
         FROM `categories` a
-        on a.id = b.author_id 
-        -- patikrinti cia^^
-        WHERE a.id = ?
-        group by a.id;";
+        WHERE a.id = ?";
         $stmt = $db->prepare($sql); // kazkas neveikia
         $stmt->bind_param("i", $id);
         $stmt->execute();
         $result = $stmt->get_result();
 
         while ($row = $result->fetch_assoc()) {
-            $categories = new Categories($row['id'], $row['name'], $row['description']);
+            $categories = new Category($row['id'], $row['name'], $row['description']);
         }
         $db->close();
 
