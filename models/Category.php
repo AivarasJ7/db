@@ -27,23 +27,23 @@ class Category
 
     public static function find($id)
     {
-        $categories = new Category();
+        $category = new Category();
         $db = new mysqli("localhost", "root", "", "web_11_23_shop");
         // $sql = "SELECT * from categories where id = ?";
         $sql = " SELECT a.id, a.name, a.description
         FROM `categories` a
         WHERE a.id = ?";
-        $stmt = $db->prepare($sql); // kazkas neveikia
+        $stmt = $db->prepare($sql);
         $stmt->bind_param("i", $id);
         $stmt->execute();
         $result = $stmt->get_result();
 
         while ($row = $result->fetch_assoc()) {
-            $categories = new Category($row['id'], $row['name'], $row['description']);
+            $category = new Category($row['id'], $row['name'], $row['description']);
         }
         $db->close();
 
-        return $categories;
+        return $category;
     }
 
     public function save()
@@ -73,7 +73,7 @@ class Category
         $sql = "DELETE FROM `categories` WHERE `id` = ?";
         $stmt = $db->prepare($sql);
         $stmt->bind_param("i", $id);
-        $stmt->execute(); // kazkas neveikia
+        $stmt->execute();
         $db->close();
     }
 }

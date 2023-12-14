@@ -8,21 +8,21 @@ public static function getAll() {
 }
 
 public static function find($id){
-    $categories = Category::find($id);
-    return $categories;
+    $category = Category::find($id);
+    return $category;
 }
 
 public static function store() {
-    $categories = new Category();
-    $categories->name = $_POST['name'];
-    $categories->description = $_POST['description'];
-    $categories->save();
+    $category = new Category();
+    $category->name = $_POST['name'];
+    $category->description = $_POST['description'];
+    $category->save();
 }
 public static function update($id) {
-    $categories = Category::find($id);
-    $categories->name = $_POST['name'];
-    $categories->description = $_POST['description'];
-    $categories->update();
+    $category = Category::find($id);
+    $category->name = $_POST['name'];
+    $category->description = $_POST['description'];
+    $category->update();
 }
 
 public static function destroy($id) {

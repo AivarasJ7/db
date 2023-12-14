@@ -4,7 +4,7 @@ if (!isset($_GET['id'])) {
 }
 
 include "../../Controllers/CategoriesController.php";
-$categories = CategoriesController::find($_GET['id']);
+$category = CategoriesController::find($_GET['id']);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,7 +24,7 @@ $categories = CategoriesController::find($_GET['id']);
             <div class="card" style="width: 100%;">
                 <img src="../../models/images/banner-1.png" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <h5 class="card-title"><?=$categories->name . " " . $categories->description ?></h5>
+                    <h5 class="card-title"><?=$category->name . " " . $category->description ?></h5>
                 </div>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">Isdelioti itemai turetu buti cia palei kategorija</li>
