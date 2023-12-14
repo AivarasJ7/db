@@ -1,6 +1,6 @@
 <?php
 include "../../Controllers/ActorController.php";
-$actor = ActorController::getAll();
+$actors = ActorController::getAll();
 ?>
 
 <!DOCTYPE html>
@@ -25,7 +25,7 @@ $actor = ActorController::getAll();
                 <th>last name</th>
                 <th>valdymas</th>
             </tr>
-            <?php foreach ($actor as $key => $individualActor) { ?>
+            <?php foreach ($actors as $key => $individualActor) { ?>
                 <tr>
                 <td> <?= $key + 1 ?> </td>
                 <td> <?= $individualActor->actor_id ?> </td>

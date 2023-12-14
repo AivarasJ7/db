@@ -17,7 +17,7 @@ class Actor{
         $db = new mysqli("localhost", "root", "", "sakila");
         $result = $db->query("SELECT * from actor");
         while ($row = $result->fetch_assoc()){
-            $actor[] = new Actor($row['actor_id'], $row['first_name'], ['last_name'],);
+            $actor[] = new Actor($row['actor_id'], $row['first_name'], $row['last_name'],);
         }
         return $actor;
     }
