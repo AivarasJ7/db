@@ -19,10 +19,10 @@ $categories = CategoriesController::getAll();
 </head>
 
 <body>
-    <div class="container mt-5" style="padding-top: 15px;">
+    <div class="container mt-5">
         <img src="../../models/images/banner-1.png" class="card-img-top" alt="...">
 
-        <h1 class="mb-4">Categories</h1>
+        <h1 class="mb-4 display-4 text-center text-uppercase">Categories</h1>
 
         <div class="row mt-4">
             <div class="col">
@@ -37,7 +37,7 @@ $categories = CategoriesController::getAll();
         <div class="row">
             <?php foreach ($categories as $key => $category) { ?>
                 <div class="col-md-2 mb-4">
-                    <div class="card h-100 d-flex flex-column">
+                    <div class="card h-100 d-flex flex-column bg-light">
                         <img src="<?= $category->photo ? $category->photo : '../../models/images/default.jpg' ?>" class="card-img-top img-fluid" alt="<?= $category->name ?>">
                         <div class="card-body d-flex flex-column">
                             <h5 class="card-title"><?= $category->name ?></h5>

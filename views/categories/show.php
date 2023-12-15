@@ -18,37 +18,48 @@ $category = CategoriesController::find($_GET['id']);
 </head>
 
 <body>
-<div class="row mt-4">
-        <div class="col"></div>
-        
-        <div class="col"></div>
-    </div>
-    <div class="row">
-        <div class="col"></div>
-        <div class="col-6">
-            <div class="card" style="width: 100%;">
-                <img src="../../models/images/banner-1.png" class="card-img-top" alt="...">
-                <div class="col-6">
-            <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-primary" type="submit">Search</button>
-            </form>
+    <div class="container mt-5">
+        <img src="../../models/images/banner-1.png" class="card-img-top" alt="...">
+
+        <h1 class="mb-4 display-4 text-center text-uppercase">Category Details</h1>
+
+        <div class="row mt-4">
+            <div class="col">
+                <form class="d-flex">
+                    <input class="form-control" type="search" placeholder="Look for a product" aria-label="Search" style="width: 100%;">
+                    <button class="btn btn-outline-primary" type="submit">Search</button>
+                </form>
+            </div>
         </div>
-                <div class="card-body">
-                    <h5 class="card-title"><?=$category->name . " " . $category->description ?></h5>
+
+        <div class="row mt-4">
+            <div class="col-md-8 offset-md-2">
+                <div class="row">
+                <div class="col-md-6" style="height: 200px; overflow: hidden;">
+    <img src="<?= $category->photo ? $category->photo : '../../models/images/default.jpg' ?>" class="card-img-top" alt="<?= $category->name ?>" style="width: 100%; height: 100%; object-fit: contain;">
+</div>
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title"><?= $category->name . " " . $category->description ?></h5>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                            </ul>
+                            <div class="card-body">
+                                <a href="./index.php" class="card-link">Get back to all categories</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Isdelioti itemai turetu buti cia palei kategorija</li>
-                </ul>
-                <div class="card-body">
-                    <a href="./index.php" class="card-link">Show all categories</a>
+
+                <div class="row mt-4">
+                    <div class="col">
+                        <p>Isdelioti itemai turetu buti cia palei kategorija</p>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="col"></div>
     </div>
-
-   
 </body>
 
 </html>
