@@ -18,11 +18,22 @@ $category = CategoriesController::find($_GET['id']);
 </head>
 
 <body>
+<div class="row mt-4">
+        <div class="col"></div>
+        
+        <div class="col"></div>
+    </div>
     <div class="row">
         <div class="col"></div>
         <div class="col-6">
             <div class="card" style="width: 100%;">
                 <img src="../../models/images/banner-1.png" class="card-img-top" alt="...">
+                <div class="col-6">
+            <form class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-primary" type="submit">Search</button>
+            </form>
+        </div>
                 <div class="card-body">
                     <h5 class="card-title"><?=$category->name . " " . $category->description ?></h5>
                 </div>
@@ -36,6 +47,8 @@ $category = CategoriesController::find($_GET['id']);
         </div>
         <div class="col"></div>
     </div>
+
+   
 </body>
 
 </html>
