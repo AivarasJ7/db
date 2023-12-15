@@ -19,24 +19,26 @@ $categories = CategoriesController::getAll();
 </head>
 
 <body>
-    <div class="container mt-5">
+<div class="container mt-5">
         <img src="../../models/images/banner-1.png" class="card-img-top" alt="...">
+        
         <h1 class="mb-4">Categories</h1>
 
         <div class="row mt-4">
             <div class="col"></div>
             <div class="col-6">
-            <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" style="width: 100%;">
-        <button class="btn btn-outline-primary" type="submit">Search</button>
-    </form>
+                <form class="d-flex">
+                <a class="btn btn-success" href="./create.php">Create new category</a>
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" style="width: 100%;">
+                    <button class="btn btn-outline-primary" type="submit">Search</button>
+                </form>
             </div>
             <div class="col"></div>
         </div>
 
         <div class="row">
-            <table class="table">
-                <!-- <thead>
+            <!-- <table class="table">
+                <thead>
                     <tr>
                         <th>#</th>
                         <th>ID</th>
@@ -44,15 +46,16 @@ $categories = CategoriesController::getAll();
                         <th>Description</th>
                         <th>Actions</th>
                     </tr>
-                </thead> --> 
-                <tbody>
-                <?php foreach ($categories as $key => $category) { ?>
-                        <div class="col-md-4 mb-4">
+                </thead> 
+                <tbody> -->
+                <div class="row">
+            <?php foreach ($categories as $key => $category) { ?>
+                <div class="col-md-4 mb-4">
                     <div class="card">
-                        <img src="../../models/images/<?= $category->image ?? 'default.jpg' ?>" class="card-img-top" alt="<?= $category->name ?>">
+                        <img src="<?= $category->photo ? $category->photo : '../../models/images/default.jpg' ?>" class="card-img-top" alt="<?= $category->name ?>">
                         <div class="card-body">
                             <h5 class="card-title"><?= $category->name ?></h5>
-                             <p class="card-text"><?= $category->description ?></p>
+                            <p class="card-text"><?= $category->description ?></p>
                             <div class="btn-group" role="group">
                                 <a class="btn btn-primary" href="./show.php?id=<?= $category->id ?>">Show</a>
                                 <a class="btn btn-success" href="./edit.php?id=<?= $category->id ?>">Edit</a>
