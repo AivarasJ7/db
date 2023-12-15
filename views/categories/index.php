@@ -38,9 +38,9 @@ $categories = CategoriesController::getAll();
         <div class="row">
                 <div class="row">
             <?php foreach ($categories as $key => $category) { ?>
-                <div class="col-md-4 mb-4">
+                <div class="col-md-2 mb-4">
                     <div class="card">
-                        <img src="<?= $category->photo ? $category->photo : '../../models/images/default.jpg' ?>" class="card-img-top" alt="<?= $category->name ?>">
+                    <img src="<?= $category->photo ? $category->photo : '../../models/images/default.jpg' ?>" class="card-img-top img-fluid" alt="<?= $category->name ?>" style="max-width: 100%; height: auto;">
                         <div class="card-body">
                             <h5 class="card-title"><?= $category->name ?></h5>
                             <p class="card-text"><?= $category->description ?></p>
