@@ -19,37 +19,35 @@ $categories = CategoriesController::getAll();
 </head>
 
 <body>
-<div class="container mt-5">
+    <div class="container mt-5" style="padding-top: 15px;">
         <img src="../../models/images/banner-1.png" class="card-img-top" alt="...">
-        
+
         <h1 class="mb-4">Categories</h1>
 
         <div class="row mt-4">
-            <div class="col"></div>
-            <div class="col-6">
+            <div class="col">
                 <form class="d-flex">
-                <a class="btn btn-success" href="./create.php">Create new category</a>
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" style="width: 100%;">
+                    <a class="btn btn-success btn-sm me-2" href="./create.php">Create new category</a>
+                    <input class="form-control" type="search" placeholder="Search" aria-label="Search" style="width: 100%;">
                     <button class="btn btn-outline-primary" type="submit">Search</button>
                 </form>
             </div>
-            <div class="col"></div>
         </div>
+
         <div class="row">
-                <div class="row">
             <?php foreach ($categories as $key => $category) { ?>
                 <div class="col-md-2 mb-4">
-                    <div class="card">
-                    <img src="<?= $category->photo ? $category->photo : '../../models/images/default.jpg' ?>" class="card-img-top img-fluid" alt="<?= $category->name ?>" style="max-width: 100%; height: auto;">
-                        <div class="card-body">
+                    <div class="card h-100 d-flex flex-column">
+                        <img src="<?= $category->photo ? $category->photo : '../../models/images/default.jpg' ?>" class="card-img-top img-fluid" alt="<?= $category->name ?>">
+                        <div class="card-body d-flex flex-column">
                             <h5 class="card-title"><?= $category->name ?></h5>
                             <p class="card-text"><?= $category->description ?></p>
-                            <div class="btn-group" role="group">
-                                <a class="btn btn-primary" href="./show.php?id=<?= $category->id ?>">Show</a>
-                                <a class="btn btn-success" href="./edit.php?id=<?= $category->id ?>">Edit</a>
+                            <div class="btn-group mt-auto" role="group">
+                                <a class="btn btn-primary btn-sm" href="./show.php?id=<?= $category->id ?>">Show</a>
+                                <a class="btn btn-success btn-sm" href="./edit.php?id=<?= $category->id ?>">Edit</a>
                                 <form action="./index.php" method="post" class="d-inline">
                                     <input type="hidden" name="id" value="<?= $category->id ?>">
-                                    <button class="btn btn-danger" type="submit">Delete</button>
+                                    <button class="btn btn-danger btn-sm" type="submit">Delete</button>
                                 </form>
                             </div>
                         </div>
