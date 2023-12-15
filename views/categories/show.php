@@ -21,7 +21,7 @@ $category = CategoriesController::find($_GET['id']);
     <div class="container mt-5">
         <img src="../../models/images/banner-1.png" class="card-img-top" alt="...">
 
-        <h1 class="mb-4 display-4 text-center text-uppercase">Category Details</h1>
+        <h1 class="mb-4 display-4 text-center text-uppercase"><?= $category->name ?? 'Category' ?></h1>
 
         <div class="row mt-4">
             <div class="col">
@@ -35,9 +35,9 @@ $category = CategoriesController::find($_GET['id']);
         <div class="row mt-4">
             <div class="col-md-8 offset-md-2">
                 <div class="row">
-                <div class="col-md-6" style="height: 200px; overflow: hidden;">
-    <img src="<?= $category->photo ? $category->photo : '../../models/images/default.jpg' ?>" class="card-img-top" alt="<?= $category->name ?>" style="width: 100%; height: 100%; object-fit: contain;">
-</div>
+                    <div class="col-md-6" style="height: 200px; overflow: hidden;">
+                        <img src="<?= $category->photo ? $category->photo : '../../models/images/default.jpg' ?>" class="card-img-top" alt="<?= $category->name ?>" style="width: 100%; height: 100%; object-fit: contain;">
+                    </div>
                     <div class="col-md-6">
                         <div class="card">
                             <div class="card-body">
