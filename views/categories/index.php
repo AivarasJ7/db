@@ -35,19 +35,7 @@ $categories = CategoriesController::getAll();
             </div>
             <div class="col"></div>
         </div>
-
         <div class="row">
-            <!-- <table class="table">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>ID</th>
-                        <th>Category Name</th>
-                        <th>Description</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead> 
-                <tbody> -->
                 <div class="row">
             <?php foreach ($categories as $key => $category) { ?>
                 <div class="col-md-4 mb-4">
