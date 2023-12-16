@@ -44,6 +44,8 @@ $category = CategoriesController::findWithItems($_GET['id']);
                                 <h5 class="card-title"><?= $category->name . " " . $category->description ?></h5>
                             </div>
                             <ul class="list-group list-group-flush">
+                                <?php foreach ($category->items as $item) { ?>
+                                <?php } ?>
                             </ul>
                             <div class="card-body">
                                 <a href="./index.php" class="card-link">Get back to all categories</a>
@@ -53,25 +55,25 @@ $category = CategoriesController::findWithItems($_GET['id']);
                 </div>
 
                 <div class="row mt-4">
-                    <div class="col">
-                        <p>Related items for this category:</p>
-                        <div class="row">
-                            <?php foreach ($category->items as $item) { ?>
-                                <div class="col-md-4">
-                                    <div class="card">
-                                        <img src="<?= $item->photo ? $item->photo : '../../models/images/default.jpg' ?>" class="card-img-top" alt="<?= $item->title ?>" style="height: 200px; object-fit: cover;">
-                                        <div class="card-body">
-                                            <h5 class="card-title"><?= $item->title ?></h5>
-                                            <p class="card-text"><?= $item->description ?></p>
-                                            <p class="card-text">Price: $<?= $item->price ?></p>
-                                            <a href="#" class="btn btn-primary">Buy Now</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            <?php } ?>
+    <div class="col">
+        <p>Related items for this category:</p>
+        <div class="row">
+            <?php foreach ($category->items as $item) { ?>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="<?= $item->photo ? $item->photo : '../../models/images/default.jpg' ?>" class="card-img-top" alt="<?= $item->title ?>">
+                        <div class="card-body">
+                            <h5 class="card-title"><?= $item->title ?></h5>
+                            <p class="card-text"><?= $item->description ?></p>
+                            <p class="card-text">Price: $<?= $item->price ?></p>
+                            <a href="#" class="btn btn-primary">Buy Now</a>
                         </div>
                     </div>
                 </div>
+            <?php } ?>
+        </div>
+    </div>
+</div>
             </div>
         </div>
     </div>
