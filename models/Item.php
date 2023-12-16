@@ -56,4 +56,15 @@ class Item
     $stmt->execute();
     $db->close();
 }
+
+// public static function destroy($id)
+// {
+//     $db = new mysqli("localhost", "root", "", "web_11_23_shop");
+//     $sql = "DELETE FROM `categories` WHERE `id` = ?";
+//     $stmt = $db->prepare($sql);
+//     $stmt->bind_param("i", $id);
+//     $stmt->execute();
+//     $db->close();
+// }
+//sitas is category paimtas turetu veikti
 }
