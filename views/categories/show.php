@@ -6,6 +6,7 @@ if (!isset($_GET['id'])) {
 include "../../Controllers/CategoriesController.php";
 $category = CategoriesController::findWithItems($_GET['id']);
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,8 +14,7 @@ $category = CategoriesController::findWithItems($_GET['id']);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <title>Document</title>
-    
+    <title><?= $category->name ?? 'Category' ?></title>
 </head>
 
 <body>
@@ -49,31 +49,34 @@ $category = CategoriesController::findWithItems($_GET['id']);
                             </ul>
                             <div class="card-body">
                                 <a href="./index.php" class="card-link">Get back to all categories</a>
+                                
+                                <!-- Add a button/link to create a new item -->
+                                <a href="../../views/items/create.php" class="btn btn-success">Create Item</a>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="row mt-4">
-    <div class="col">
-        <p>Related items for this category:</p>
-        <div class="row">
-            <?php foreach ($category->items as $item) { ?>
-                <div class="col-md-4">
-                    <div class="card">
-                        <img src="<?= $item->photo ? $item->photo : '../../models/images/default.jpg' ?>" class="card-img-top" alt="<?= $item->title ?>">
-                        <div class="card-body">
-                            <h5 class="card-title"><?= $item->title ?></h5>
-                            <p class="card-text"><?= $item->description ?></p>
-                            <p class="card-text">Price: $<?= $item->price ?></p>
-                            <a href="#" class="btn btn-primary">Buy Now</a>
+                    <div class="col">
+                        <p>Related items for this category:</p>
+                        <div class="row">
+                            <?php foreach ($category->items as $item) { ?>
+                                <div class="col-md-4">
+                                    <div class="card">
+                                        <img src="<?= $item->photo ? $item->photo : '../../models/images/default.jpg' ?>" class="card-img-top" alt="<?= $item->title ?>">
+                                        <div class="card-body">
+                                            <h5 class="card-title"><?= $item->title ?></h5>
+                                            <p class="card-text"><?= $item->description ?></p>
+                                            <p class="card-text">Price: $<?= $item->price ?></p>
+                                            <a href="#" class="btn btn-primary">Buy Now</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php } ?>
                         </div>
                     </div>
                 </div>
-            <?php } ?>
-        </div>
-    </div>
-</div>
             </div>
         </div>
     </div>

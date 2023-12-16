@@ -1,6 +1,6 @@
 <?php
-include "../../models/Category.php";
-include "../../models/Item.php";
+include_once "../../models/Category.php";
+include_once "../../models/Item.php";
 class CategoriesController{
 
 public static function getAll() {
