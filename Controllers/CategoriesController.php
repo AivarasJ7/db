@@ -1,5 +1,6 @@
 <?php
 include "../../models/Category.php";
+include "../../models/Item.php";
 class CategoriesController{
 
 public static function getAll() {
@@ -27,6 +28,41 @@ public static function update($id) {
 
 public static function destroy($id) {
     Category::destroy($id);
+}
+
+public static function findWithItems($id)
+{
+    $category = new Category();
+    $db = new mysqli("localhost", "root", "", "web_11_23_shop");
+    
+    // Fetch category details
+    $sqlCategory = "SELECT * FROM categories WHERE id = ?";
+    $stmtCategory = $db->prepare($sqlCategory);
+    $stmtCategory->bind_param("i", $id);
+    $stmtCategory->execute();
+    $resultCategory = $stmtCategory->get_result();
+    
+    while ($rowCategory = $resultCategory->fetch_assoc()) {
+        $category = new Category($rowCategory['id'], $rowCategory['name'], $rowCategory['description'], $rowCategory['photo']);
+    }
+
+    // Fetch related items
+    $sqlItems = "SELECT * FROM items WHERE category_id = ?";
+    $stmtItems = $db->prepare($sqlItems);
+    $stmtItems->bind_param("i", $id);
+    $stmtItems->execute();
+    $resultItems = $stmtItems->get_result();
+
+    $items = [];
+    while ($rowItem = $resultItems->fetch_assoc()) {
+        $items[] = new Item($rowItem['category_id'], $rowItem['title'], $rowItem['description'], $rowItem['photo'], $rowItem['price']);
+    }
+
+    $category->items = $items;
+
+    $db->close();
+
+    return $category;
 }
 
 }

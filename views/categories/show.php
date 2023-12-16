@@ -4,7 +4,7 @@ if (!isset($_GET['id'])) {
 }
 
 include "../../Controllers/CategoriesController.php";
-$category = CategoriesController::find($_GET['id']);
+$category = CategoriesController::findWithItems($_GET['id']);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -54,7 +54,22 @@ $category = CategoriesController::find($_GET['id']);
 
                 <div class="row mt-4">
                     <div class="col">
-                        <p>Isdelioti itemai turetu buti cia palei kategorija</p>
+                        <p>Related items for this category:</p>
+                        <div class="row">
+                            <?php foreach ($category->items as $item) { ?>
+                                <div class="col-md-4">
+                                    <div class="card">
+                                        <img src="<?= $item->photo ? $item->photo : '../../models/images/default.jpg' ?>" class="card-img-top" alt="<?= $item->title ?>" style="height: 200px; object-fit: cover;">
+                                        <div class="card-body">
+                                            <h5 class="card-title"><?= $item->title ?></h5>
+                                            <p class="card-text"><?= $item->description ?></p>
+                                            <p class="card-text">Price: $<?= $item->price ?></p>
+                                            <a href="#" class="btn btn-primary">Buy Now</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php } ?>
+                        </div>
                     </div>
                 </div>
             </div>

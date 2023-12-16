@@ -15,14 +15,14 @@ class ItemsController{
 
     public static function store() {
         $item = new Item();  // Update to match your actual model class
-        $item->name = $_POST['name'];
+        $item->title = $_POST['title'];
         $item->description = $_POST['description'];
         $item->save();
     }
 
     public static function update($id) {
         $item = Item::find($id);  // Update to match your actual model class
-        $item->name = $_POST['name'];
+        $item->title = $_POST['title'];
         $item->description = $_POST['description'];
         $item->update();
     }
