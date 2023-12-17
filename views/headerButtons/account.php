@@ -1,8 +1,11 @@
 <?php
 $user = [
-    'id' => 1,
+    // 'id' => 1,
     'username' => 'Vardenis Pavardenis',
     'email' => 'mail@example.com',
+    'adress' => '123 Main Street, Apt 4B
+    Cityville, State 54321
+    United States',
 ];
 ?>
 
@@ -59,9 +62,9 @@ $user = [
                     <div class="card-body">
                         <h5 class="card-title">Account Information</h5>
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item"><strong>User ID:</strong> <?= $user['id'] ?></li>
                             <li class="list-group-item"><strong>Username:</strong> <?= $user['username'] ?></li>
                             <li class="list-group-item"><strong>Email:</strong> <?= $user['email'] ?></li>
+                            <li class="list-group-item"><strong>Adresas:</strong> <?= $user['adress'] ?></li>
                         </ul>
                     </div>
                 </div>
