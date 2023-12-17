@@ -27,8 +27,8 @@ $category = CategoriesController::findWithItems($_GET['id']);
         <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="bi bi-house-door"></i> Home
+                    <a class="nav-link" href="./index.php">
+                        <i class="bi bi-house-door"></i> Categories
                     </a>
                 </li>
                 <li class="nav-item">
@@ -107,7 +107,7 @@ $category = CategoriesController::findWithItems($_GET['id']);
                     </div>
                 </div>
             </div>
-            
+
     <footer class="mt-5">
         <div class="container">
             <div class="row">
