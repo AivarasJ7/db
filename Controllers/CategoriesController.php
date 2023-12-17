@@ -62,7 +62,5 @@ public static function findWithItems($id)
 
     return $category;
 }
-
 }
-
 ?>

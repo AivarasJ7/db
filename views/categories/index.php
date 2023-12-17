@@ -15,7 +15,7 @@ $categories = CategoriesController::getAll();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <title>Document</title>
+    <title>Categories</title>
 </head>
 
 <body>
@@ -33,16 +33,16 @@ $categories = CategoriesController::getAll();
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="bi bi-question-circle"></i> Help
-                    </a>
-                </li>
+                <a class="nav-link" href="../headerButtons/help.php">
+        <i class="bi bi-question-circle"></i> Help
+                </a>
+            </li>
             </ul>
             <div class="navbar-text">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="../headerButtons/account.php">
                     <i class="bi bi-person"></i> Account
                 </a>
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="../headerButtons/cart.php">
                     <i class="bi bi-cart"></i> Shopping Cart
                 </a>
             </div>

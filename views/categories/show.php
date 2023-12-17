@@ -32,16 +32,16 @@ $category = CategoriesController::findWithItems($_GET['id']);
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="bi bi-question-circle"></i> Help
-                    </a>
-                </li>
+                <a class="nav-link" href="../headerButtons/help.php">
+        <i class="bi bi-question-circle"></i> Help
+                </a>
+            </li>
             </ul>
             <div class="navbar-text">
-                <a class="nav-link" href="#">
+            <a class="nav-link" href="../headerButtons/account.php">
                     <i class="bi bi-person"></i> Account
                 </a>
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="../headerButtons/cart.php">
                     <i class="bi bi-cart"></i> Shopping Cart
                 </a>
             </div>
@@ -98,7 +98,7 @@ $category = CategoriesController::findWithItems($_GET['id']);
                                             <h5 class="card-title"><?= $item->title ?></h5>
                                             <p class="card-text"><?= $item->description ?></p>
                                             <p class="card-text">Price: $<?= $item->price ?></p>
-                                            <a href="#" class="btn btn-primary">Buy Now</a>
+                                            <a href="#" class="btn btn-primary">Add to cart</a>
                                         </div>
                                     </div>
                                 </div>

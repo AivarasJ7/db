@@ -38,7 +38,5 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
             <div class="col"></div>
         </div>
     </div>
-
 </body>
-
 </html>
