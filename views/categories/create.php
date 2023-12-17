@@ -1,7 +1,6 @@
 <?php
 include "../../Controllers/CategoriesController.php";
 
-//jei atejai su post, atnaujinam irasa, ir redirectinam i index.php
 if($_SERVER['REQUEST_METHOD'] == "POST"){
     CategoriesController::store();
     header("Location: ./index.php");

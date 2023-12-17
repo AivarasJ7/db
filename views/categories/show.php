@@ -49,8 +49,6 @@ $category = CategoriesController::findWithItems($_GET['id']);
                             </ul>
                             <div class="card-body">
                                 <a href="./index.php" class="card-link">Get back to all categories</a>
-                                
-                                <!-- Add a button/link to create a new item -->
                                 <a href="../../views/items/create.php" class="btn btn-success">Create Item</a>
                             </div>
                         </div>

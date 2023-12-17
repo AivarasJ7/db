@@ -1,7 +1,6 @@
 <?php
 include "../../Controllers/CategoriesController.php";
 
-//jei atejai su post, atnaujinam irasa, ir redirectinam i index.php
 if($_SERVER['REQUEST_METHOD'] == "POST"){
     CategoriesController::update($_POST['id']);
     header("Location: ./index.php");
@@ -12,7 +11,6 @@ if (!isset($_GET['id'])) {
 }
 
 $categories = CategoriesController::find($_GET['id']);
-// print_r($categories);die;
 ?>
 <!DOCTYPE html>
 <html lang="en">

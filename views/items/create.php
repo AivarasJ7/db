@@ -1,23 +1,17 @@
 <?php
 include "../../Controllers/ItemsController.php";
-include "../../Controllers/CategoriesController.php";  // Include the CategoriesController
+include "../../Controllers/CategoriesController.php";
 
-// If the form is submitted, store the item and redirect to index.php
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
-    // Assuming your form fields are named "title", "description", "price", and "category_id"
     $title = $_POST['title'];
     $description = $_POST['description'];
     $price = $_POST['price'];
-    $category_id = $_POST['category_id'];  // Add this line to get the category_id
+    $category_id = $_POST['category_id'];
 
-    // Validate input as needed
+    ItemsController::store($title, $description, $price, $category_id);
 
-    // Create a new item and save it
-    ItemsController::store($title, $description, $price, $category_id);  // Pass the category_id
-
-    // Redirect to index.php
     header("Location: ./index.php");
-    exit(); // Make sure to exit after a header redirect
+    exit(); 
 }
 ?>
 
@@ -50,12 +44,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                         <label for="price">Price:</label>
                         <input type="text" class="form-control" name="price" placeholder="Enter Price" required>
                     </div>
-                    <!-- Add a dropdown for selecting the category -->
                     <div class="form-group">
                         <label for="category_id">Select Category:</label>
                         <select class="form-control" name="category_id" required>
                             <?php
-                            // Fetch all categories
                             $categories = CategoriesController::getAll();
                             foreach ($categories as $category) {
                                 echo "<option value=\"{$category->id}\">{$category->name}</option>";

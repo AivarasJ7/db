@@ -14,17 +14,14 @@ class ItemsController {
     }
 
     public static function store() {
-        // Validate and sanitize input as needed
         $item = new Item();
         $item->title = $_POST['title'];
         $item->description = $_POST['description'];
         $item->price = $_POST['price'];
-        $item->category_id = $_POST['category_id']; // Assuming the category_id is submitted via the form
+        $item->category_id = $_POST['category_id'];
         $item->save();
     
-        // Redirect to the category page
         header("Location: ../../views/categories/show.php?id=" . $item->category_id);
-        exit(); // Make sure to exit after a header redirect
     }
 
     public static function update($id) {

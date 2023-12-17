@@ -35,7 +35,6 @@ public static function findWithItems($id)
     $category = new Category();
     $db = new mysqli("localhost", "root", "", "web_11_23_shop");
     
-    // Fetch category details
     $sqlCategory = "SELECT * FROM categories WHERE id = ?";
     $stmtCategory = $db->prepare($sqlCategory);
     $stmtCategory->bind_param("i", $id);
@@ -46,7 +45,6 @@ public static function findWithItems($id)
         $category = new Category($rowCategory['id'], $rowCategory['name'], $rowCategory['description'], $rowCategory['photo']);
     }
 
-    // Fetch related items
     $sqlItems = "SELECT * FROM items WHERE category_id = ?";
     $stmtItems = $db->prepare($sqlItems);
     $stmtItems->bind_param("i", $id);

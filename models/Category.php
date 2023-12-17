@@ -1,5 +1,4 @@
 <?php
-//include database
 class Category
 {
     public $id;

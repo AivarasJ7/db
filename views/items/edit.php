@@ -1,21 +1,15 @@
 <?php
 include "../../Controllers/ItemsController.php";
 
-// If the form is submitted, store the item and redirect to index.php
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
-    // Assuming your form fields are named "title", "description", "price"
     $title = $_POST['title'];
     $description = $_POST['description'];
     $price = $_POST['price'];
 
-    // Validate input as needed
-
-    // Create a new item and save it
     ItemsController::store($title, $description, $price);
 
-    // Redirect to index.php
     header("Location: ./index.php");
-    exit(); // Make sure to exit after a header redirect
+    exit(); 
 }
 ?>
 
