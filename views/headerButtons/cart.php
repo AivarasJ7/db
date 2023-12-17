@@ -7,9 +7,21 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
         crossorigin="anonymous">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        main {
+            flex: 1;
+        }
+    </style>
     <title>Shopping Cart</title>
 </head>
-<body>
+
+<body class="d-flex flex-column min-vh-100">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Electronics</a>
@@ -20,12 +32,12 @@
             <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                    <a class="nav-link" href="../categories/index.php">
+                        <a class="nav-link" href="../categories/index.php">
                             <i class="bi bi-house-door"></i> Categories
                         </a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="../headerButtons/help.php">
+                        <a class="nav-link" href="../headerButtons/help.php">
                             <i class="bi bi-question-circle"></i> Help
                         </a>
                     </li>
@@ -41,14 +53,13 @@
             </div>
         </div>
     </nav>
-    <div class="container mt-5">
+    <div class="container mt-5 flex-grow-1">
         <h1 class="mb-4 display-4 text-center text-uppercase">Shopping Cart</h1>
 
         <p>Your shopping cart is currently empty. Start shopping now!</p>
 
         <p>Total Price: $0.00</p>
     </div>
-    
     <footer class="mt-5">
         <div class="container">
             <div class="row">
