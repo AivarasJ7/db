@@ -1,9 +1,14 @@
 <?php
+include "../../Controllers/CategoriesController.php";
+
+if($_SERVER['REQUEST_METHOD'] == "POST"){
+  echo "thinam";die;
+}
+
 if (!isset($_GET['id'])) {
     header("Location: ./index.php");
 }
 
-include "../../Controllers/CategoriesController.php";
 $category = CategoriesController::findWithItems($_GET['id']);
 ?>
 
@@ -80,7 +85,7 @@ $category = CategoriesController::findWithItems($_GET['id']);
                             </ul>
                             <div class="card-body">
                                 <a href="./index.php" class="card-link">Get back to all categories</a>
-                                <a href="../../views/items/create.php" class="btn btn-success">Create Item</a>
+                                <a href="../../views/items/create.php?category_id=<?=$_GET['id']?>" class="btn btn-success">Create Item</a>
                             </div>
                         </div>
                     </div>
@@ -99,6 +104,10 @@ $category = CategoriesController::findWithItems($_GET['id']);
                                             <p class="card-text"><?= $item->description ?></p>
                                             <p class="card-text">Price: $<?= $item->price ?></p>
                                             <a href="#" class="btn btn-primary">Add to cart</a>
+                                            <form action="" method="post">
+                                                <input type="hidden" name="id" value="<?=$item->id?>">
+                                                <button type="submit">delete</button>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>

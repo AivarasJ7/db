@@ -5,7 +5,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     ItemsController::destroy($_POST['id']);
     header("Location: ./index.php");
 }
-
+//if GET[cat_id] ? findByCategory : getAll;
 $items = ItemsController::getAll();
 ?>
 <!DOCTYPE html>
