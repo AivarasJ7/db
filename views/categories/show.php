@@ -1,8 +1,9 @@
 <?php
 include "../../Controllers/CategoriesController.php";
 
-if($_SERVER['REQUEST_METHOD'] == "POST"){
-  echo "trinam";die;
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
+    echo "trinam";
+    die;
 }
 
 if (!isset($_GET['id'])) {
@@ -10,6 +11,20 @@ if (!isset($_GET['id'])) {
 }
 
 $category = CategoriesController::findWithItems($_GET['id']);
+
+// Check if sorting option is selected
+$sort = isset($_GET['sort']) ? $_GET['sort'] : 'default';
+
+// Sort the items based on the selected option
+if ($sort == 'price_asc') {
+    usort($category->items, function ($a, $b) {
+        return $a->price - $b->price;
+    });
+} elseif ($sort == 'price_desc') {
+    usort($category->items, function ($a, $b) {
+        return $b->price - $a->price;
+    });
+}
 ?>
 
 <!DOCTYPE html>
@@ -23,50 +38,43 @@ $category = CategoriesController::findWithItems($_GET['id']);
 </head>
 
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#">Electronics</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="./index.php">
-                        <i class="bi bi-house-door"></i> Categories
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Electronics</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="./index.php">
+                            <i class="bi bi-house-door"></i> Categories
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../headerButtons/help.php">
+                            <i class="bi bi-question-circle"></i> Help
+                        </a>
+                    </li>
+                </ul>
+                <div class="navbar-text">
+                    <a class="nav-link" href="../headerButtons/account.php">
+                        <i class="bi bi-person"></i> Account
                     </a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link" href="../headerButtons/help.php">
-        <i class="bi bi-question-circle"></i> Help
-                </a>
-            </li>
-            </ul>
-            <div class="navbar-text">
-            <a class="nav-link" href="../headerButtons/account.php">
-                    <i class="bi bi-person"></i> Account
-                </a>
-                <a class="nav-link" href="../headerButtons/cart.php">
-                    <i class="bi bi-cart"></i> Shopping Cart
-                </a>
+                    <a class="nav-link" href="../headerButtons/cart.php">
+                        <i class="bi bi-cart"></i> Shopping Cart
+                    </a>
+                </div>
             </div>
         </div>
-    </div>
-</nav>
+    </nav>
 
     <div class="container mt-5">
         <img src="../../models/images/banner-1.png" class="card-img-top" alt="...">
 
         <h1 class="mb-4 display-4 text-center text-uppercase"><?= $category->name ?? 'Category' ?></h1>
 
-        <div class="row mt-4">
-            <div class="col">
-                <form class="d-flex">
-                    <input class="form-control" type="search" placeholder="Look for a product" aria-label="Search" style="width: 100%;">
-                    <button class="btn btn-outline-primary" type="submit">Search</button>
-                </form>
-            </div>
-        </div>
+
 
         <div class="row mt-4">
             <div class="col-md-8 offset-md-2">
@@ -85,7 +93,7 @@ $category = CategoriesController::findWithItems($_GET['id']);
                             </ul>
                             <div class="card-body">
                                 <a href="./index.php" class="card-link">Get back to all categories</a>
-                                <a href="../../views/items/create.php?category_id=<?=$_GET['id']?>" class="btn btn-success">Create Item</a>
+                                <a href="../../views/items/create.php?category_id=<?= $_GET['id'] ?>" class="btn btn-success">Create Item</a>
                             </div>
                         </div>
                     </div>
@@ -93,29 +101,56 @@ $category = CategoriesController::findWithItems($_GET['id']);
 
                 <div class="row mt-4">
                     <div class="col">
-                        <p>Related items for this category:</p>
-                        <div class="row">
-                            <?php foreach ($category->items as $item) { ?>
-                                <div class="col-md-4">
-                                    <div class="card">
-                                        <img src="<?= $item->photo ? $item->photo : '../../models/images/default.jpg' ?>" class="card-img-top" alt="<?= $item->title ?>">
-                                        <div class="card-body">
-                                            <h5 class="card-title"><?= $item->title ?></h5>
-                                            <p class="card-text"><?= $item->description ?></p>
-                                            <p class="card-text">Price: $<?= $item->price ?></p>
-                                            <a href="#" class="btn btn-primary">Add to cart</a>
-                                            <form action="" method="post">
-                                                <input type="hidden" name="id" value="<?=$item->id?>">
-                                                <button type="submit">delete</button>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            <?php } ?>
-                        </div>
+                        <form class="d-flex">
+                            <input class="form-control" type="search" placeholder="Look for a product" aria-label="Search" style="width: 100%;">
+                            <button class="btn btn-outline-primary" type="submit">Search</button>
+                        </form>
                     </div>
                 </div>
+
+
+                <div class="row mt-4">
+                    <div class="col">
+                        <form method="get" action="" class="form-inline">
+                            <div class="input-group input-group-sm">
+                                <label class="input-group-text" for="sort">Sort by:</label>
+                                <select name="sort" id="sort" class="form-select form-select-sm">
+                                    <option value="default" <?php echo ($sort == 'default') ? 'selected' : ''; ?>>Default</option>
+                                    <option value="price_asc" <?php echo ($sort == 'price_asc') ? 'selected' : ''; ?>>Price: Low to High</option>
+                                    <option value="price_desc" <?php echo ($sort == 'price_desc') ? 'selected' : ''; ?>>Price: High to Low</option>
+                                </select>
+                                <button type="submit" class="btn btn-primary btn-sm">
+                                    <i class="bi bi-arrow-up"></i>
+                                    <i class="bi bi-arrow-down"></i>
+                                </button>
+                            </div>
+                            <input type="hidden" name="id" value="<?= $_GET['id'] ?>">
+                        </form>
+                    </div>
+                </div>
+                <div class="row">
+                    <?php foreach ($category->items as $item) { ?>
+                        <div class="col-md-4">
+                            <div class="card">
+                                <img src="<?= $item->photo ? $item->photo : '../../models/images/default.jpg' ?>" class="card-img-top" alt="<?= $item->title ?>">
+                                <div class="card-body">
+                                    <h5 class="card-title"><?= $item->title ?></h5>
+                                    <p class="card-text"><?= $item->description ?></p>
+                                    <p class="card-text">Price: $<?= $item->price ?></p>
+                                    <a href="#" class="btn btn-primary">Add to cart</a>
+                                    <form action="" method="post">
+                                        <input type="hidden" name="id" value="<?= $item->id ?>">
+                                        <button type="submit">delete</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    <?php } ?>
+                </div>
             </div>
+        </div>
+    </div>
+    </div>
 
     <footer class="mt-5">
         <div class="container">
