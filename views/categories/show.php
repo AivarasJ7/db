@@ -35,6 +35,27 @@ if ($sort == 'price_asc') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <title><?= $category->name ?? 'Category' ?></title>
+    <style>
+        body {
+            padding-bottom: 70px;
+        }
+
+        .footer {
+            width: 100%;
+            background-color: #f8f9fa;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .category-section {
+            margin-top: 20px;
+        }
+
+        .category-image {
+            max-height: 200px;
+            width: auto;
+        }
+    </style>
 </head>
 
 <body>
@@ -69,18 +90,16 @@ if ($sort == 'price_asc') {
         </div>
     </nav>
 
-    <div class="container mt-5">
-        <img src="../../models/images/banner-1.png" class="card-img-top" alt="...">
+    <div class="container mt-5 category-section">
+        <img src="../../models/images/banner-1.png" class="card-img-top img-fluid" alt="...">
 
         <h1 class="mb-4 display-4 text-center text-uppercase"><?= $category->name ?? 'Category' ?></h1>
-
-
 
         <div class="row mt-4">
             <div class="col-md-8 offset-md-2">
                 <div class="row">
-                    <div class="col-md-6" style="height: 200px; overflow: hidden;">
-                        <img src="<?= $category->photo ? $category->photo : '../../models/images/default.jpg' ?>" class="card-img-top" alt="<?= $category->name ?>" style="width: 100%; height: 100%; object-fit: contain;">
+                    <div class="col-md-6">
+                        <img src="<?= $category->photo ? $category->photo : '../../models/images/default.jpg' ?>" class="card-img-top img-fluid category-image" alt="<?= $category->name ?>">
                     </div>
                     <div class="col-md-6">
                         <div class="card">
@@ -89,6 +108,7 @@ if ($sort == 'price_asc') {
                             </div>
                             <ul class="list-group list-group-flush">
                                 <?php foreach ($category->items as $item) { ?>
+                                    <!-- Item details here -->
                                 <?php } ?>
                             </ul>
                             <div class="card-body">
@@ -107,7 +127,6 @@ if ($sort == 'price_asc') {
                         </form>
                     </div>
                 </div>
-
 
                 <div class="row mt-4">
                     <div class="col">
@@ -128,11 +147,12 @@ if ($sort == 'price_asc') {
                         </form>
                     </div>
                 </div>
+
                 <div class="row">
                     <?php foreach ($category->items as $item) { ?>
                         <div class="col-md-4">
                             <div class="card">
-                                <img src="<?= $item->photo ? $item->photo : '../../models/images/default.jpg' ?>" class="card-img-top" alt="<?= $item->title ?>">
+                                <img src="<?= $item->photo ? $item->photo : '../../models/images/default.jpg' ?>" class="card-img-top img-fluid" alt="<?= $item->title ?>">
                                 <div class="card-body">
                                     <h5 class="card-title"><?= $item->title ?></h5>
                                     <p class="card-text"><?= $item->description ?></p>
@@ -140,7 +160,7 @@ if ($sort == 'price_asc') {
                                     <a href="#" class="btn btn-primary">Add to cart</a>
                                     <form action="" method="post">
                                         <input type="hidden" name="id" value="<?= $item->id ?>">
-                                        <button type="submit">delete</button>
+                                        <button type="submit" class="btn btn-danger btn-sm mt-2">Delete</button>
                                     </form>
                                 </div>
                             </div>
@@ -150,9 +170,8 @@ if ($sort == 'price_asc') {
             </div>
         </div>
     </div>
-    </div>
 
-    <footer class="mt-5">
+    <div class="footer">
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
@@ -178,6 +197,7 @@ if ($sort == 'price_asc') {
                 </div>
             </div>
         </div>
-    </footer>
+    </div>
+</body>
 
 </html>
