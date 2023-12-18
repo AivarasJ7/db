@@ -2,7 +2,7 @@
 include "../../Controllers/CategoriesController.php";
 
 if($_SERVER['REQUEST_METHOD'] == "POST"){
-  echo "thinam";die;
+  echo "trinam";die;
 }
 
 if (!isset($_GET['id'])) {
