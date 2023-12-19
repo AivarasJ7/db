@@ -12,6 +12,8 @@ if (!isset($_GET['id'])) {
 
 $category = CategoriesController::findWithItems($_GET['id']);
 
+include_once "../components/head.php";
+
 // Check if sorting option is selected
 $sort = isset($_GET['sort']) ? $_GET['sort'] : 'default';
 
@@ -59,37 +61,6 @@ if ($sort == 'price_asc') {
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">Electronics</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="./index.php">
-                            <i class="bi bi-house-door"></i> Categories
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../headerButtons/help.php">
-                            <i class="bi bi-question-circle"></i> Help
-                        </a>
-                    </li>
-                </ul>
-                <div class="navbar-text">
-                    <a class="nav-link" href="../headerButtons/account.php">
-                        <i class="bi bi-person"></i> Account
-                    </a>
-                    <a class="nav-link" href="../headerButtons/cart.php">
-                        <i class="bi bi-cart"></i> Shopping Cart
-                    </a>
-                </div>
-            </div>
-        </div>
-    </nav>
-
     <div class="container mt-5 category-section">
         <img src="../../models/images/banner-1.png" class="card-img-top img-fluid" alt="...">
 
@@ -170,34 +141,8 @@ if ($sort == 'price_asc') {
             </div>
         </div>
     </div>
-
-    <div class="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <h3>Contact Us</h3>
-                    <p>Email: contact@example.com</p>
-                    <p>Phone: +123-456-7890</p>
-                </div>
-                <div class="col-md-4">
-                    <h3>About Us</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                </div>
-                <div class="col-md-4">
-                    <h3>Follow Us</h3>
-                    <p>Connect with us on social media:</p>
-                    <div class="btn-group">
-                        <a href="https://www.facebook.com" class="btn btn-primary me-2" target="_blank">
-                            <i class="fab fa-facebook"></i> Facebook
-                        </a>
-                        <a href="https://twitter.com" class="btn btn-info" target="_blank">
-                            <i class="fab fa-twitter"></i> Twitter
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+<?php
+include "../components/footer.php";
+?>
 </body>
-
 </html>
