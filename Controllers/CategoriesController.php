@@ -30,24 +30,33 @@ public static function destroy($id) {
     Category::destroy($id);
 }
 
-public static function findWithItems($id)
+public static function findWithItems($id, $searchTerm = null)
 {
     $category = new Category();
     $db = new mysqli("localhost", "root", "", "web_11_23_shop");
-    
+
     $sqlCategory = "SELECT * FROM categories WHERE id = ?";
     $stmtCategory = $db->prepare($sqlCategory);
     $stmtCategory->bind_param("i", $id);
     $stmtCategory->execute();
     $resultCategory = $stmtCategory->get_result();
-    
+
     while ($rowCategory = $resultCategory->fetch_assoc()) {
         $category = new Category($rowCategory['id'], $rowCategory['name'], $rowCategory['description'], $rowCategory['photo']);
     }
 
     $sqlItems = "SELECT * FROM items WHERE category_id = ?";
+    $params = ["i", $id];
+
+    if ($searchTerm) {
+        $sqlItems .= " AND title LIKE ?";
+        $searchTerm = "%$searchTerm%";
+        $params[0] .= "s";
+        $params[] = $searchTerm;
+    }
+
     $stmtItems = $db->prepare($sqlItems);
-    $stmtItems->bind_param("i", $id);
+    $stmtItems->bind_param(...$params);
     $stmtItems->execute();
     $resultItems = $stmtItems->get_result();
 

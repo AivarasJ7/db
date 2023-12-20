@@ -2,22 +2,20 @@
 include "../../Controllers/CategoriesController.php";
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
-    echo "trinam";
-    die;
+    $searchTerm = isset($_POST['search']) ? $_POST['search'] : '';
+    header("Location: ./show.php?id={$_GET['id']}&search=$searchTerm");
 }
 
 if (!isset($_GET['id'])) {
     header("Location: ./index.php");
 }
 
-$category = CategoriesController::findWithItems($_GET['id']);
+$category = CategoriesController::findWithItems($_GET['id'], $_GET['search']);
 
 include_once "../components/head.php";
 
-// Check if sorting option is selected
 $sort = isset($_GET['sort']) ? $_GET['sort'] : 'default';
 
-// Sort the items based on the selected option
 if ($sort == 'price_asc') {
     usort($category->items, function ($a, $b) {
         return $a->price - $b->price;
@@ -79,7 +77,6 @@ if ($sort == 'price_asc') {
                             </div>
                             <ul class="list-group list-group-flush">
                                 <?php foreach ($category->items as $item) { ?>
-                                    <!-- Item details here -->
                                 <?php } ?>
                             </ul>
                             <div class="card-body">
@@ -90,14 +87,15 @@ if ($sort == 'price_asc') {
                     </div>
                 </div>
 
-                <div class="row mt-4">
-                    <div class="col">
-                        <form class="d-flex">
-                            <input class="form-control" type="search" placeholder="Look for a product" aria-label="Search" style="width: 100%;">
-                            <button class="btn btn-outline-primary" type="submit">Search</button>
-                        </form>
-                    </div>
-                </div>
+                <div class="col">
+    <form method="post" class="d-flex">
+        <input class="form-control" type="search" name="search" placeholder="Look for a product" aria-label="Search" style="width: 100%;" value="<?= $_GET['search'] ?? '' ?>">
+        <button class="btn btn-outline-primary" type="submit">Search</button>
+    </form>
+    <?php if (isset($_GET['search'])) : ?>
+        <a href="./show.php?id=<?= $_GET['id'] ?>" class="btn btn-warning">Clear Search</a>
+    <?php endif; ?>
+</div>
 
                 <div class="row mt-4">
                     <div class="col">
