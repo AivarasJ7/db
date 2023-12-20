@@ -10,7 +10,7 @@ if (!isset($_GET['id'])) {
     header("Location: ./index.php");
 }
 
-$category = CategoriesController::findWithItems($_GET['id'], $_GET['search']);
+$category = CategoriesController::findWithItems($_GET['id'], $_GET['search']); // pataisyti
 
 include_once "../components/head.php";
 
