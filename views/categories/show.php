@@ -1,5 +1,6 @@
 <?php
 include "../../Controllers/CategoriesController.php";
+include_once "../components/head.php";
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $searchTerm = isset($_POST['search']) ? $_POST['search'] : '';
@@ -13,8 +14,6 @@ if (!isset($_GET['id'])) {
 
 $searchTerm = isset($_GET['search']) ? $_GET['search'] : '';
 $category = CategoriesController::findWithItems($_GET['id'], $searchTerm);
-
-include_once "../components/head.php";
 
 $sort = isset($_GET['sort']) ? $_GET['sort'] : 'default';
 

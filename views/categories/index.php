@@ -1,5 +1,6 @@
 <?php
 include "../../Controllers/CategoriesController.php";
+include_once "../components/head.php";
 
 if($_SERVER['REQUEST_METHOD'] == "POST"){
     CategoriesController::destroy($_POST['id']);
@@ -7,8 +8,6 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
 }
 
 $categories = CategoriesController::getAll();
-
-include_once "../components/head.php";
 
 ?>
 <!DOCTYPE html>

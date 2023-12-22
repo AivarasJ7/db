@@ -1,3 +1,7 @@
+<?php
+include_once 'headConfig.php';
+?>
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">Electronics</a>
@@ -7,7 +11,7 @@
         <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="./index.php">
+                    <a class="nav-link" href="../../index.php">
                         <i class="bi bi-house-door"></i> Categories
                     </a>
                 </li>
