@@ -143,5 +143,5 @@ if ($sort == 'price_asc') {
 <?php
 include "../components/footer.php";
 ?>
-</body>
+    </body>
 </html>
