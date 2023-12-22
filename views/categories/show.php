@@ -3,14 +3,16 @@ include "../../Controllers/CategoriesController.php";
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $searchTerm = isset($_POST['search']) ? $_POST['search'] : '';
-    header("Location: ./show.php?id={$_GET['id']}&search=$searchTerm");
+    $categoryId = isset($_GET['id']) ? $_GET['id'] : '';
+    header("Location: ./show.php?id=$categoryId&search=$searchTerm");
 }
 
 if (!isset($_GET['id'])) {
     header("Location: ./index.php");
 }
 
-$category = CategoriesController::findWithItems($_GET['id'], $_GET['search']); // pataisyti
+$searchTerm = isset($_GET['search']) ? $_GET['search'] : '';
+$category = CategoriesController::findWithItems($_GET['id'], $searchTerm);
 
 include_once "../components/head.php";
 
