@@ -1,11 +1,14 @@
 <?php
 include "../../Controllers/CategoriesController.php";
+include_once "../../Controllers/ItemsController.php";
 include_once "../components/head.php";
 
-if ($_SERVER['REQUEST_METHOD'] == "POST") {
-    $searchTerm = isset($_POST['search']) ? $_POST['search'] : '';
+if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['id'])) {
+    ItemsController::destroy($_POST['id']);
+    $searchTerm = isset($_GET['search']) ? $_GET['search'] : '';
     $categoryId = isset($_GET['id']) ? $_GET['id'] : '';
     header("Location: ./show.php?id=$categoryId&search=$searchTerm");
+    exit();
 }
 
 if (!isset($_GET['id'])) {
@@ -128,10 +131,10 @@ if ($sort == 'price_asc') {
                                     <p class="card-text"><?= $item->description ?></p>
                                     <p class="card-text">Price: $<?= $item->price ?></p>
                                     <a href="#" class="btn btn-primary">Add to cart</a>
-                                    <form action="" method="post">
+                                    <!-- <form action="<?= $_SERVER['PHP_SELF'] ?>" method="post">
                                         <input type="hidden" name="id" value="<?= $item->id ?>">
                                         <button type="submit" class="btn btn-danger btn-sm mt-2">Delete</button>
-                                    </form>
+                                    </form> -->
                                 </div>
                             </div>
                         </div>
