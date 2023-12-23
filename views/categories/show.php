@@ -89,14 +89,14 @@ if ($sort == 'price_asc') {
                 </div>
 
                 <div class="col">
-    <form method="post" class="d-flex">
-        <input class="form-control" type="search" name="search" placeholder="Look for a product" aria-label="Search" style="width: 100%;" value="<?= $_GET['search'] ?? '' ?>">
-        <button class="btn btn-outline-primary" type="submit">Search</button>
-    </form>
-    <?php if (isset($_GET['search'])) : ?>
-        <a href="./show.php?id=<?= $_GET['id'] ?>" class="btn btn-warning">Clear Search</a>
-    <?php endif; ?>
-</div>
+                    <form method="post" class="d-flex">
+                        <input class="form-control" type="search" name="search" placeholder="Look for a product" aria-label="Search" style="width: 100%;" value="<?= $_GET['search'] ?? '' ?>">
+                        <button class="btn btn-outline-primary" type="submit">Search</button>
+                    </form>
+                    <?php if (isset($_GET['search'])) : ?>
+                        <a href="./show.php?id=<?= $_GET['id'] ?>" class="btn btn-warning">Clear Search</a>
+                    <?php endif; ?>
+                </div>
 
                 <div class="row mt-4">
                     <div class="col">
@@ -140,8 +140,9 @@ if ($sort == 'price_asc') {
             </div>
         </div>
     </div>
-<?php
-include "../components/footer.php";
-?>
-    </body>
+    <?php
+    include "../components/footer.php";
+    ?>
+</body>
+
 </html>

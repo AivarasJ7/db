@@ -10,16 +10,16 @@ die;
 
 
 <!-- <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "web_11_23_shop";
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        $dbname = "web_11_23_shop";
 
-$conn = new mysqli($servername, $username, $password, $dbname);
+        $conn = new mysqli($servername, $username, $password, $dbname);
 
-$sql = "SELECT * FROM categories; ";
-$result = $conn->query($sql);
-?>
+        $sql = "SELECT * FROM categories; ";
+        $result = $conn->query($sql);
+        ?>
 
 <!DOCTYPE html>
 <html lang="en">

@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     ItemsController::store($title, $description, $price);
 
     header("Location: ./index.php");
-    exit(); 
+    exit();
 }
 ?>
 

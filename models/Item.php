@@ -47,12 +47,12 @@ class Item
     }
 
     public function save()
-{
-    $db = new mysqli("localhost", "root", "", "web_11_23_shop");
-    $sql = "INSERT INTO `items`(`category_id`, `title`, `description`, `photo`, `price`) VALUES (?, ?, ?, ?, ?)";
-    $stmt = $db->prepare($sql);
-    $stmt->bind_param("isssd", $this->category_id, $this->title, $this->description, $this->photo, $this->price);
-    $stmt->execute();
-    $db->close();
-}
+    {
+        $db = new mysqli("localhost", "root", "", "web_11_23_shop");
+        $sql = "INSERT INTO `items`(`category_id`, `title`, `description`, `photo`, `price`) VALUES (?, ?, ?, ?, ?)";
+        $stmt = $db->prepare($sql);
+        $stmt->bind_param("isssd", $this->category_id, $this->title, $this->description, $this->photo, $this->price);
+        $stmt->execute();
+        $db->close();
+    }
 }

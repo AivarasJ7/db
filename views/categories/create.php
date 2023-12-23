@@ -1,7 +1,7 @@
 <?php
 include "../../Controllers/CategoriesController.php";
 
-if($_SERVER['REQUEST_METHOD'] == "POST"){
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
     CategoriesController::store();
     header("Location: ./index.php");
 }
@@ -39,4 +39,5 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
         </div>
     </div>
 </body>
+
 </html>

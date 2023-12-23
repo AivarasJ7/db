@@ -4,6 +4,7 @@ include_once "../components/head.php";
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,6 +12,7 @@ include_once "../components/head.php";
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
+
 <body>
     <div class="container mt-5">
         <h1 class="mb-4 display-4 text-center text-uppercase">Electronic Shop Help</h1>
@@ -44,8 +46,9 @@ include_once "../components/head.php";
         <p>We are available Monday to Friday, 9:00 AM - 5:00 PM (EST).</p>
 
     </div>
-<?php
-include "../components/footer.php";
-?>
-    </body>
+    <?php
+    include "../components/footer.php";
+    ?>
+</body>
+
 </html>

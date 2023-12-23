@@ -2,7 +2,7 @@
 include "../../Controllers/CategoriesController.php";
 include_once "../components/head.php";
 
-if($_SERVER['REQUEST_METHOD'] == "POST"){
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
     CategoriesController::destroy($_POST['id']);
     header("Location: ./index.php");
 }
@@ -40,15 +40,19 @@ $categories = CategoriesController::getAll();
 
         <div class="row">
             <?php foreach ($categories as $key => $category) { ?>
-                <div class="col-md-2 mb-4">
+                <div class="col-md-2 mb-2">
                     <div class="card h-100 d-flex flex-column bg-light">
                         <img src="<?= $category->photo ? $category->photo : '../../models/images/default.jpg' ?>" class="card-img-top img-fluid" alt="<?= $category->name ?>">
                         <div class="card-body d-flex flex-column">
                             <h5 class="card-title"><?= $category->name ?></h5>
                             <p class="card-text"><?= $category->description ?></p>
-                            <div class="btn-group mt-auto" role="group">
-                                <a class="btn btn-primary btn-sm" href="./show.php?id=<?= $category->id ?>">Show</a>
-                                <a class="btn btn-success btn-sm" href="./edit.php?id=<?= $category->id ?>">Edit</a>
+                            <div class="mt-auto text-center">
+                                <div class="mb-2">
+                                    <a class="btn btn-primary btn-sm" href="./show.php?id=<?= $category->id ?>">Show</a>
+                                </div>
+                                <div class="mb-2">
+                                    <a class="btn btn-success btn-sm" href="./edit.php?id=<?= $category->id ?>">Edit</a>
+                                </div>
                                 <form action="./index.php" method="post" class="d-inline">
                                     <input type="hidden" name="id" value="<?= $category->id ?>">
                                     <button class="btn btn-danger btn-sm" type="submit">Delete</button>
@@ -57,10 +61,11 @@ $categories = CategoriesController::getAll();
                         </div>
                     </div>
                 </div>
-                <?php } ?>
+            <?php } ?>
         </div>
-<?php
-include "../components/footer.php";
-?>
-    </body>
+        <?php
+        include "../components/footer.php";
+        ?>
+</body>
+
 </html>

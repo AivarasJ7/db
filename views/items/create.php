@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     ItemsController::store($title, $description, $price, $category_id);
 
     header("Location: ./index.php");
-    exit(); 
+    exit();
 }
 ?>
 
@@ -50,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                             <?php
                             $categories = CategoriesController::getAll();
                             foreach ($categories as $category) {
-                                echo "<option " . (($category->id == $_GET['category_id']) ? 'selected':'') . " value=\"{$category->id}\">{$category->name}</option>";
+                                echo "<option " . (($category->id == $_GET['category_id']) ? 'selected' : '') . " value=\"{$category->id}\">{$category->name}</option>";
                             }
                             ?>
                         </select>
