@@ -3,12 +3,10 @@ include "../../Controllers/CategoriesController.php";
 include_once "../../Controllers/ItemsController.php";
 include_once "../components/head.php";
 
-if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['id'])) {
-    ItemsController::destroy($_POST['id']);
-    $searchTerm = isset($_GET['search']) ? $_GET['search'] : '';
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
+    $searchTerm = isset($_POST['search']) ? $_POST['search'] : '';
     $categoryId = isset($_GET['id']) ? $_GET['id'] : '';
     header("Location: ./show.php?id=$categoryId&search=$searchTerm");
-    exit();
 }
 
 if (!isset($_GET['id'])) {
