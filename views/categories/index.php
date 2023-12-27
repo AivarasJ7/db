@@ -1,14 +1,12 @@
 <?php
 include "../../Controllers/CategoriesController.php";
 include_once "../components/head.php";
+$categories = CategoriesController::getAll();
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     CategoriesController::destroy($_POST['id']);
     header("Location: ./index.php");
 }
-
-$categories = CategoriesController::getAll();
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,11 +20,10 @@ $categories = CategoriesController::getAll();
 
 <body>
 
-
     <div class="container mt-5">
-        <img src="../../models/images/banner-1.png" class="card-img-top banner-image" alt="...">
+        <img src="../../models/images/banner-1.png" class="card-img-top w-100 mb-4" alt="...">
 
-        <h1 class="mb-4 display-4 text-center text-uppercase">Categories</h1>
+        <h1 class="display-4 text-center text-uppercase">Categories</h1>
 
         <div class="row mt-4">
             <div class="col">
@@ -38,34 +35,31 @@ $categories = CategoriesController::getAll();
             </div>
         </div>
 
-        <div class="row">
+        <div class="row row-cols-1 row-cols-md-5 g-4">
             <?php foreach ($categories as $key => $category) { ?>
-                <div class="col-md-2 mb-2">
-                    <div class="card h-100 d-flex flex-column bg-light">
+                <div class="col">
+                    <a href="./show.php?id=<?= $category->id ?>" class="card text-decoration-none">
                         <img src="<?= $category->photo ? $category->photo : '../../models/images/default.jpg' ?>" class="card-img-top img-fluid" alt="<?= $category->name ?>">
-                        <div class="card-body d-flex flex-column">
+                        <div class="card-body">
                             <h5 class="card-title"><?= $category->name ?></h5>
                             <p class="card-text"><?= $category->description ?></p>
-                            <div class="mt-auto text-center">
-                                <div class="mb-2">
-                                    <a class="btn btn-primary btn-sm" href="./show.php?id=<?= $category->id ?>">Show</a>
-                                </div>
-                                <div class="mb-2">
-                                    <a class="btn btn-success btn-sm" href="./edit.php?id=<?= $category->id ?>">Edit</a>
-                                </div>
-                                <form action="./index.php" method="post" class="d-inline">
-                                    <input type="hidden" name="id" value="<?= $category->id ?>">
-                                    <button class="btn btn-danger btn-sm" type="submit">Delete</button>
-                                </form>
-                            </div>
                         </div>
-                    </div>
+                        <div class="d-flex justify-content-center">
+                            <a class="btn btn-primary btn-sm me-1" href="./show.php?id=<?= $category->id ?>">Show</a>
+                            <a class="btn btn-success btn-sm me-1" href="./edit.php?id=<?= $category->id ?>">Edit</a>
+                            <form action="./index.php" method="post">
+                                <input type="hidden" name="id" value="<?= $category->id ?>">
+                                <button class="btn btn-danger btn-sm" type="submit">Delete</button>
+                            </form>
+                        </div>
+                    </a>
                 </div>
             <?php } ?>
         </div>
-        <?php
-        include "../components/footer.php";
-        ?>
+    </div>
+
+    <?php include "../components/footer.php"; ?>
+
 </body>
 
 </html>
