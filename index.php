@@ -3,12 +3,6 @@ header("Location: ./views/categories");
 die;
 ?>
 
-
-
-
-
-
-
 <!-- <?php
         $servername = "localhost";
         $username = "root";
