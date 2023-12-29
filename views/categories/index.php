@@ -29,8 +29,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             <div class="col">
                 <form class="d-flex">
                     <a class="btn btn-success btn-sm me-2" href="./create.php">Create new category</a>
-                    <input class="form-control" type="search" placeholder="Search" aria-label="Search" style="width: 100%;">
-                    <button class="btn btn-outline-primary" type="submit">Search</button>
                 </form>
             </div>
         </div>
