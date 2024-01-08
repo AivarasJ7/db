@@ -57,6 +57,10 @@ if ($sort == 'price_asc') {
             max-height: 200px;
             width: auto;
         }
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
     </style>
 </head>
 
